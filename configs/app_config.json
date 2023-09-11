@@ -1,0 +1,58 @@
+{
+    "lastUpdated": "2023-07-21",
+    "beerList": {
+        "Alt": {
+            "active": false,
+            "units": {}
+        },
+        "Anniversary Pils": {
+            "active": false,
+            "units": {}
+        },
+        "Broomstacker": {
+            "active": false,
+            "units": {}
+        },
+        "Decision Fatigue ": {
+            "active": true,
+            "units": {}
+        },
+        "Ewald The Golden ": {
+            "active": true,
+            "units": {}
+        }
+    },
+    "distributorList": [
+        "Distributor 1",
+        "Distributor 2",
+        "Distributor 3",
+        "Personal",
+        "Taproom"
+    ],
+    "sizeMap": {
+        "case12": {
+            "caseEquiv": 1,
+            "friendlyName": "Case - 12 oz"
+        },
+        "case16": {
+            "caseEquiv": 1,
+            "friendlyName": "Case - 16oz"
+        },
+        "fourPk16": {
+            "caseEquiv": 6,
+            "friendlyName": "Four Pack - 16 oz"
+        },
+        "twelvePk12": {
+            "caseEquiv": 2,
+            "friendlyName": "Twelve Pack - 12 oz"
+        },
+        "single12": {
+            "caseEquiv": 24,
+            "friendlyName": "Single 12 oz Can"
+        },
+        "single16": {
+            "caseEquiv": 24,
+            "friendlyName": "Single 16oz Can"
+        }
+    }
+}

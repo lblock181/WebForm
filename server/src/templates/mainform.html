@@ -1,0 +1,72 @@
+{% extends "index.html" %}
+
+{% block content %}
+<main class="main-block">
+    <form id="mainForm">
+        <h1>Utepils Beer Removal</h1>
+        <div id="message" style="display:none;"></div>
+        <h2>Your Name?</h2>
+        <input class="center-block" type="text" id="taking" name="employeeName"/>
+        <h2>Where Is It Going?</h2>
+        <select class="center-block" name="vendors" id="distributor" onchange="togglePulled(this)">
+            <option value="">Select an option</option>
+            {% for distrib in distrib_list %}
+                <option value="{{ distrib }}">{{ distrib }}</option> 
+            {% endfor %}
+            <option value="Other">Other</option>
+        </select>
+        <input class="center-block" type="hidden" name="vendors" placeholder="Enter Other here" id="vendorOther" hidden>
+        <h2>Why Pulled?</h2>
+        <input class="center-block" type="text" id="going" name="destination"/>
+        <h2>When Was It Taken?</h2>
+        <input class="center-block" type="date" name="dateTaken" id="dateTaken" max="{{ max_date }}" step="1"/>
+        <div id="break-line"></div>
+        <h2>Quantities Taken</h2>
+        <div>
+            <button type="button" style="float:right; margin-bottom: 0.5rem;" id="addBtn" onclick="addNewBeerRow()">Add item</button>
+            <table id="beers">
+                <tr>
+                    <th class="first-col">Beer Name</th>
+                    <th><strong>Unit</strong></th>
+                    <th><strong>Quantity</strong></th>
+                </tr>
+                <tr>
+                    <td class="first-col">
+                        <div class="selectDiv">
+
+                            <select name="beer1" id="beer1" onchange="setUnitOptions(this)">
+                                <option value="">Select a beer</option>
+                                {% for beer_name, vals in beer_list | dictsort %}
+                                    {% if vals.active %}
+                                <option value="{{ beer_name }}">{{ beer_name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                                </select>
+                        </div>
+                        </td>
+                        <td>
+                            <div class="selectDiv">
+                                <select name="unit1" id="unit1">
+                                    <option value="">Select size</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td><input class="beerQuant" type="number" name="quant1" /></td>
+                    </tr>
+            </table>
+        </div>
+        <div class="btn-block">
+            <button id="sub" type="button" onclick="submitButtonClicked();">Submit</button>
+        </div>
+    </form>
+</main>
+
+<script>
+    window.addEventListener("DOMContentLoaded", loadToSessionStorage);
+
+    function loadToSessionStorage() {
+        sessionStorage.setItem("beerArr", JSON.stringify({{ beer_list_str | tojson }}) );
+    }
+
+</script>
+{% endblock %}

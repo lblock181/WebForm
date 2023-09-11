@@ -1,0 +1,392 @@
+:root {
+    --high-light-grey: hsl(0, 0%, 90%);
+    --light-grey: hsl(0, 0%, 80%);
+    --medium-grey: hsl(0, 0%, 60%);
+    --dark-grey: hsl(0, 0%, 40%);
+    --bg-light: hsl(0, 0%, 100%);
+    --primary-color: hsl(217, 12%, 30%);
+    --primary-high-color: hsl(217, 12%, 80%);
+    --secondary-color: hsl(23, 70%, 59%);
+    --secondary-color-light: hsl(23, 70%, 69%);
+    --secondary-color-high-light: hsl(23, 70%, 95%);
+    --danger-color: hsl(0, 70%, 59%);
+}
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    height: 100%;
+    /* padding-bottom: 3rem; */
+}
+
+body, input { 
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    color: var(--primary-color);
+    line-height: 22px;
+}
+
+h1 {
+    /* padding-bottom: 2rem; */
+    text-align: center;
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+h2, h3, h4 {
+    text-align: center;
+    font-weight: 400;
+}
+
+hr {
+    border: 1px solid var(--dark-grey);
+    width: 70%;
+    margin: 0.25rem 0;
+}
+
+.main-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3rem;
+    flex: 1;
+    }
+
+.container {
+    box-shadow: 0 2px 5px var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    width: 50%;
+}
+
+.secondary-bg {
+    background-color: var(--secondary-color-light);
+}
+
+#message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.125rem;
+  height: 2rem;
+  border-radius: 25px;
+}
+
+form {
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 2px 5px hsl(0, 0%, 80%); 
+    box-shadow: var(--light-grey);
+    background: var(--bg-light);
+    }
+
+.login-form {
+    width: 50%;
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.25rem 0;
+}
+
+input {
+    padding: 5px;
+    text-align: center;
+}
+
+input[type=text] {
+    width: 40%;
+    /* padding: 5px; */
+    border-radius: 3px;
+    border: 1px solid var(--light-grey);
+    /* text-align: center; */
+    }
+
+#distributors {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+input:hover {
+    outline: none;
+    border: 1px solid var(--dark-grey);
+    }
+
+input[type=submit] {
+    margin-top: 1.5rem;
+    cursor:default;
+}
+input[type=submit]:hover {
+    background-color: var(--secondary-color);
+}
+
+input:invalid {
+    border: 1px solid red;
+}
+
+.center-block {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+td {
+    width: 15%;
+    padding: 15px 0;
+    text-align: center;
+    vertical-align: unset;
+    line-height: 18px;
+    font-weight: 400;
+    }
+
+#distribs {
+    border: 2px solid var(--light-grey);
+}
+
+#beers {
+    border: 1px solid var(--light-grey);
+}
+
+#beers tr:nth-child(even) {
+    background-color: var(--high-light-grey);
+}
+
+#beers tr td {
+    border-right: 1px solid var(--light-grey);
+}
+
+#beers tr td:last-child {
+    border-right: none;
+}
+
+#beers tr td input {
+    width: 25%;
+}
+
+#distributor {
+    height: 2rem;
+    width: 15rem;
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 0.5rem;
+}
+
+.selectDiv, .radioDiv {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.radioDiv {
+    display: none;
+    width: 30%;
+}
+
+.form-check {
+    display: inline;
+}
+
+#break-line {
+    height: 2px;
+    width: 80%;
+    background: var(--secondary-color);
+    display: block;
+    margin: 1rem auto 1rem auto;
+}
+
+table {
+    width: 100%;
+    }
+
+.btn-block {
+    margin-top: 20px;
+    text-align: center;
+    }
+
+
+.beerQuant::-webkit-inner-spin-button,
+.beerQuant::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.beerQuant[type=number] {
+    -moz-appearance: textfield;
+}
+
+button {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px; 
+    background: var(--secondary-color);
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    }
+
+button:hover {
+    background: var(--secondary-color-light);
+    }
+
+.danger-btn {
+    background-color: var(--danger-color);
+    width: 5rem;
+}
+
+.btn-save {
+    margin: 0.5rem 0;
+    width: 20rem;
+    height: 4rem;
+}
+
+#dwldBtn {
+    margin-top: 0.5rem;
+}
+
+#reportSection {
+    width: 50%;
+}
+
+#reportSection form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#reportSection form > * {
+    margin: 0.5rem 0;
+}
+
+#filterByDistrib div {
+    width: 100%;
+    text-align: center;
+}
+
+section {
+    margin: 1rem 0;
+}
+
+.config-section {
+    margin-top: 5rem;
+    width: 80%;
+}
+
+.config-table {
+    border-collapse: collapse;
+    border: 3px solid var(--dark-grey);
+}
+
+.config-table th, .config-table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.5rem;
+}
+
+.config-table th {
+    font-size: large;
+    border-bottom: 3px solid var(--dark-grey);
+}
+
+.config-table tr:nth-child(even) {
+    background-color: var(--high-light-grey);
+}
+
+.config-table select {
+    width: 40%;
+    text-align: center;
+}
+
+.tbl-col {
+    display: inline-grid;
+    justify-items: center;
+    padding: 0.1rem 2rem;
+}
+
+.valign-override {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+#main-footer {
+    background: var(--dark-grey);
+    color: #fff;
+    height: 3rem;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+#main-footer .footer-content {
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    align-items: center;
+    padding-left: 0.5rem;
+}
+    
+#main-footer .footer-content .social .fab {
+    margin-right: 1rem;
+    border: 2px #fff solid;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    padding: 0.5rem;
+}
+#main-footer .footer-content .social .fab:hover {
+    background: var(--primary-color);
+}
+
+#main-footer .social a i {
+    color: #fff
+}      
+
+@media (max-width: 568px) {
+  body {
+    font-size: 16px;
+  }
+
+  form {
+    padding: 20px 10px;
+  }
+
+  #beers {
+    padding: 0.5rem 0.25rem;
+    border: 1px solid var(--dark-grey);
+  }
+
+  td .first-col {
+    font-size: 0.1rem;
+    line-height: 10px;
+  }
+
+  .beerQuant {
+    font-size: inherit;
+    width: 30%;
+  }
+
+  #beers select {
+    font-size: inherit;
+  }
+}
+
+@media (max-width: 394px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    footer {
+        height: 1.5rem;
+        font-size: 80%;
+    }
+}

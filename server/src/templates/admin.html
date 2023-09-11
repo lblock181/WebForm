@@ -1,0 +1,104 @@
+{% extends "index.html" %}
+
+{% block content %}
+{% set batch_size = 3 %}
+<style>
+    .main-block {flex-direction: column;}
+</style>
+<main class="main-block">
+    <section>
+        <h1>Utepils Beer Checkout Admin</h1>
+        <div id="message" style="display: none; margin-bottom: 2rem;"></div>
+        <div style="display: flex; justify-content: center;">
+            <button class="button" onclick="toggleReportSection()">Generate Reports</button>
+        </div>
+    </section>
+    <section id="reportSection" hidden>
+        <h2>Filter by:</h2>
+        <div class="main-block" style="padding-bottom: 1rem;">
+            <input type="radio" name="filterRadio" id="radioDistrib" onclick="toggleReportFilter(this);">
+            <label for="radioDistrib">Distributor/Destination</label>
+            <input type="radio" name="filterRadio" id="radioDate" onclick="toggleReportFilter(this);">
+            <label for="radioDate">Date or Date Range</label>
+        </div>
+        <form id="filterByDistrib" style="display: none;">
+            {% if config_content %}
+                {% set distrib_batch = config_content.distributorList | batch(batch_size) %}
+                {% for distrib in distrib_batch %}
+                <div>
+                    {% for d in distrib %}
+                        <input type="checkbox" name="distribFilter" id="{{ d }}">
+                        <label for="{{ d }}">{{ d }}</label>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                <div>
+                    <button class='button' id="dwldBtn" onclick="downloadReport(this); return false;">Download Report</button>
+                    <button hidden><i class="fa-solid fa-spinner fa-spin"></i></button>
+                </div>
+            {% endif %}
+        </form>
+        <form id="filterByDate" style="display: none;">
+            <label for="fromDate">From Date</label>
+            <input type="date" name="fromDate" id="fromDate">
+            <label for="toDate">To Date</label>
+            <input type="date" name="toDate" id="toDate">
+            <button class='button' id="dwldBtn" onclick="downloadReport(this); return false;">Download Report</button>
+            <button hidden><i class="fa-solid fa-spinner fa-spin"></i></button>
+        </form>
+    </section>
+    <hr hidden>
+    {% if config_content %}
+    <section class="config-section">
+        <table class="config-table" id="beerConfig">
+            <tr>
+                <th>Beer Name</th>
+                <th>Available Units</th>
+                <th>Active?</th>
+            </tr>
+            {% for beer_name, beer_config in config_content.beerList.items() %}
+            <tr>
+                <td>{{ beer_name }}</td>
+                <td class="unit-select">
+                    {% set sizeMap_batch = config_content.sizeMap.items() | batch(batch_size) %}
+                    {% for size_map in sizeMap_batch %}
+                        <div class="tbl-col">
+                            {% for unit_html, unit_vals in size_map %}
+                                <input type="checkbox" name="{{ unit_html }}" id="{{ unit_html }}" {{ 'checked' if unit_html in beer_config.units }}>
+                                <label for="{{ unit_html }}">{{ unit_vals.friendlyName }}</label>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </td>
+                <td>
+                    <input class="valign-override" type="checkbox" {{ 'checked' if beer_config.active }}>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button onclick="addNewBeerRow()" style="float:right; margin-top:0.5rem;">Add New Beer</button>
+    </section>
+    <section class="config-section">
+        <table class="config-table" id="distribConfig">
+            <tr>
+                <th>Distributor/Destination</th>
+                <th>
+                    <button onclick="addDistributorRow()">Add New Row</button>
+                </th>
+            </tr>
+            {% for distrib in config_content.distributorList %}
+                <tr>
+                    <td>{{ distrib }}</td>
+                    <td>
+                        <button class="danger-btn" onclick="removeTableRow(this)">Remove</button>
+                    </td>
+                </tr>
+                {% endfor %}
+        </table>
+    </section>
+    <button class="btn-save" onclick="saveConfig(this); return false;">Save config</button>
+    <button hidden><i class="fa-solid fa-spinner fa-spin"></i></button>
+    {% endif %}
+</main>
+
+{% endblock %}
